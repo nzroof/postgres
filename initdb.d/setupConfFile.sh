@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+CONF_FILE=/usr/share/postgresql/postgresql.conf.sample
+
 sed -ri "s/^#?(shared_preload_libraries)\s*=\s*''/\1 = 'pg_stat_statements'/" $CONF_FILE
 
 echo 'default_statistics_target = 5000' >> $CONF_FILE
