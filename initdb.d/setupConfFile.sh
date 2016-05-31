@@ -21,3 +21,7 @@ echo 'work_mem = 64MB' >> $CONF_FILE
 
 echo 'track_activity_query_size = 2048' >> $CONF_FILE
 echo 'pg_stat_statements.track = all' >> $CONF_FILE
+
+HOST_IP=$(ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print $2}')
+
+sed -i "/host    all             all             127.0.0.1\/32            trust/a host    all             all             $HOST_IP            md5" $PGDATA/pg_hba.conf
