@@ -1,8 +1,12 @@
 #!/usr/bin/env bash
 
-CONF_FILE=/usr/share/postgresql/postgresql.conf.sample
+$CONF_FILE=$PGDATA/conf.d/roofnz.conf
 
-sed -ri "s/^#?(shared_preload_libraries)\s*=\s*''/\1 = 'pg_stat_statements'/" $CONF_FILE
+sed -ri "s/^#?(shared_preload_libraries)\s*=\s*''/\1 = 'pg_stat_statements'/" $PGDATA/postgresql.conf
+echo "include_if_exists = 'roofnz.conf'"
+
+mkdir -p $PGDATA/conf.d
+touch $PGDATA/conf.d/roofnz.conf
 
 echo 'default_statistics_target = 5000' >> $CONF_FILE
 echo 'maintenance_work_mem = 4GB' >> $CONF_FILE
