@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+PGDATA=/var/lib/postgresql/data
 CONF_FILE=$PGDATA/conf.d/nzroof.conf
 
 sed -ri "s/^#?(shared_preload_libraries)\s*=\s*''/\1 = 'pg_stat_statements'/" $PGDATA/postgresql.conf
