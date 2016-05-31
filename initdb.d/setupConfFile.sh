@@ -7,7 +7,9 @@ sed -ri "s/^#?(shared_preload_libraries)\s*=\s*''/\1 = 'pg_stat_statements'/" $P
 echo "include_if_exists = 'roofnz.conf'" >> $PGDATA/postgresql.conf
 
 mkdir -p /var/lib/postgresql/data/conf.d
+chown postgres:postgres /var/lib/postgresql/data/conf.d
 touch $CONF_FILE
+chown postgres:postgres $CONF_FILE
 
 echo 'default_statistics_target = 5000' >> $CONF_FILE
 echo 'maintenance_work_mem = 4GB' >> $CONF_FILE
