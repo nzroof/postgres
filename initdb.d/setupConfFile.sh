@@ -4,7 +4,7 @@ PGDATA=/var/lib/postgresql/data
 CONF_FILE=$PGDATA/conf.d/nzroof.conf
 
 sed -ri "s/^#?(shared_preload_libraries)\s*=\s*''/\1 = 'pg_stat_statements'/" $PGDATA/postgresql.conf
-echo "include_if_exists = 'roofnz.conf'" >> $PGDATA/postgresql.conf
+echo "include_dir = 'conf.d'" >> $PGDATA/postgresql.conf
 
 mkdir -p /var/lib/postgresql/data/conf.d
 chown postgres:postgres /var/lib/postgresql/data/conf.d
