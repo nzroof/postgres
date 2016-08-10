@@ -1,4 +1,4 @@
-FROM postgres:9.5
+FROM postgres:9.6
 
 MAINTAINER Graeme Gellatly <graemeg@roof.co.nz>
 
