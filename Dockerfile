@@ -7,11 +7,6 @@ RUN easy_install wal-e
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-ENV ACCESS_KEY # ACCESS KEY for S3, ACCOUNT NAME for Azure
-ENV SECRET_KEY # SECRET ACCESS KEY for S3, ACCESS KEY for Azure
-ENV CONTAINER_TYPE # S3 or AZURE
-ENV BUCKET
-
 ADD scripts/setup-wal-e.sh setup-wal-e.sh
 RUN chmod +x ./setup-wal-e.sh  && ./setup-wal-e.sh
 
