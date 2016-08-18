@@ -30,9 +30,6 @@ echo 'archive_mode = on' >> $WAL_CONF_FILE
 echo "archive_command = 'envdir /etc/wal-e.d/env /usr/local/bin/wal-e wal-push %p'" >> $WAL_CONF_FILE
 echo "archive_timeout = 60" >> $WAL_CONF_FILE
 
-su - postgres -c "crontab -l | { cat; echo \"0 3 * * * /usr/bin/envdir /etc/wal-e.d/env /usr/local/bin/wal-e backup-push /var/lib/postgresql/data\"; } | crontab -"
-su - postgres -c "crontab -l | { cat; echo \"30 3 * * * /usr/bin/envdir /etc/wal-e.d/env /usr/local/bin/wal-e delete --confirm retain 5\"; } | crontab -"
-
 # Allow docker network connections
 HOST_IP=$(ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print $2}')
 
