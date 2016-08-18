@@ -13,4 +13,4 @@ ADD initdb.d/setup-wal-e.sh /docker-entrypoint-initdb.d/setup-wal-e.sh
 
 RUN chmod 755 /docker-entrypoint-initdb.d/setupConfFile.sh
 RUN chmod 755 /docker-entrypoint-initdb.d/setupExtensions.sql
-ADD chmod 755 /docker-entrypoint-initdb.d/setup-wal-e.sh
+RUN chmod 755 /docker-entrypoint-initdb.d/setup-wal-e.sh
