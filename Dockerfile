@@ -2,8 +2,8 @@ FROM postgres:9.5
 
 MAINTAINER Graeme Gellatly <graemeg@roof.co.nz>
 
-RUN apt-get update && apt-get install -y python-pip python-dev lzop pv daemontools
-RUN easy_install wal-e
+RUN apt-get update && apt-get install -y python3 python3-pip python3-dev lzop pv daemontools
+RUN easy_install3 wal-e
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
