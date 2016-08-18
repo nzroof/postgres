@@ -7,12 +7,10 @@ RUN easy_install3 wal-e
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-ADD scripts/setup-wal-e.sh setup-wal-e.sh
-RUN chmod +x ./setup-wal-e.sh
-RUN ./setup-wal-e.sh
-
 ADD initdb.d/setupConfFile.sh /docker-entrypoint-initdb.d/setupConfFile.sh
 ADD initdb.d/setupExtensions.sql /docker-entrypoint-initdb.d/setupExtensions.sql
+ADD initdb.d/setup-wal-e.sh /docker-entrypoint-initdb.d/setup-wal-e.sh
 
 RUN chmod 755 /docker-entrypoint-initdb.d/setupConfFile.sh
 RUN chmod 755 /docker-entrypoint-initdb.d/setupExtensions.sql
+ADD chmod 755 /docker-entrypoint-initdb.d/setup-wal-e.sh
