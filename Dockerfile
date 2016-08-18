@@ -2,13 +2,14 @@ FROM postgres:9.5
 
 MAINTAINER Graeme Gellatly <graemeg@roof.co.nz>
 
-RUN apt-get update && apt-get install -y python3 python3-pip python3-dev lzop pv daemontools
+RUN apt-get update && apt-get install -y python3 python3-pip python3-dev lzop pv daemontools cron
 RUN easy_install3 wal-e
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 ADD scripts/setup-wal-e.sh setup-wal-e.sh
-RUN chmod +x ./setup-wal-e.sh  && ./setup-wal-e.sh
+RUN chmod +x ./setup-wal-e.sh
+RUN ./setup-wal-e.sh
 
 ADD initdb.d/setupConfFile.sh /docker-entrypoint-initdb.d/setupConfFile.sh
 ADD initdb.d/setupExtensions.sql /docker-entrypoint-initdb.d/setupExtensions.sql
