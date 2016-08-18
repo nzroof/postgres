@@ -7,10 +7,10 @@ if [ "$CONTAINER_TYPE" = "S3" ]; then
     echo "$ACCESS_KEY" > /etc/wal-e.d/env/AWS_ACCESS_KEY_ID
     echo "$BUCKET" > /etc/wal-e.d/env/WALE_S3_PREFIX
     echo "$AWS_REGION" > /etc/wal-e.d/env/AWS_REGION
-    unset SECRET_KEY
-    unset ACCESS_KEY
-    unset BUCKET
-    unset AWS_REGION
+    export SECRET_KEY=secret-key
+    export ACCESS_KEY=access-key
+    export BUCKET=s3bucket
+    export AWS_REGION=aws-region
 elif [ "$CONTAINER_TYPE" = "AZURE" ]; then
     echo "$SECRET_KEY" > /etc/wal-e.d/env/WABS_ACCESS_KEY
     echo "$ACCESS_KEY" > /etc/wal-e.d/env/WABS_ACCOUNT_NAME

@@ -34,3 +34,6 @@ echo "archive_timeout = 60" >> $WAL_CONF_FILE
 HOST_IP=$(ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print $2}')
 
 sed -i "/host    all             all             127.0.0.1\/32            trust/a host    all             all             $HOST_IP            md5" $PGDATA/pg_hba.conf
+
+# Remove POSTGRES_PASSWORD env var
+export POSTGRES_PASSWORD=mypostgres_password
