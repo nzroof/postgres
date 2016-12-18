@@ -26,8 +26,8 @@ echo 'pg_stat_statements.track = all' >> $GEN_CONF_FILE
 # Turn on WAL Archiving
 WAL_CONF_FILE=$PGDATA/conf.d/20-wal.conf
 echo 'wal_level = archive' >> $WAL_CONF_FILE
-echo 'archive_mode = on' >> $WAL_CONF_FILE
-echo "archive_command = 'envdir /etc/wal-e.d/env /usr/local/bin/wal-e wal-push %p'" >> $WAL_CONF_FILE
+echo 'archive_mode = off' >> $WAL_CONF_FILE
+#echo "archive_command = 'envdir /etc/wal-e.d/env /usr/local/bin/wal-e wal-push %p'" >> $WAL_CONF_FILE
 echo "archive_timeout = 60" >> $WAL_CONF_FILE
 
 # Allow docker network connections
