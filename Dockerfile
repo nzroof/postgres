@@ -1,4 +1,4 @@
-FROM postgres:9.5
+FROM postgres:9.6
 
 MAINTAINER Graeme Gellatly <graemeg@roof.co.nz>
 
@@ -10,7 +10,7 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 ADD initdb.d/setupConfFile.sh /docker-entrypoint-initdb.d/setupConfFile.sh
 ADD initdb.d/setupExtensions.sql /docker-entrypoint-initdb.d/setupExtensions.sql
-ADD scripts/setup-wal-e.sh /tmp/setup-wal-e.sh
+#ADD scripts/setup-wal-e.sh /tmp/setup-wal-e.sh
 
 RUN chmod 755 /docker-entrypoint-initdb.d/setupConfFile.sh
 RUN chmod 755 /docker-entrypoint-initdb.d/setupExtensions.sql
